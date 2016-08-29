@@ -1,0 +1,23 @@
+{
+  "name": "hubot-glip",
+  "version": "1.0.0",
+  "description": "Hubot adapter to use with Glip",
+  "main": "src/glip.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerlong/hubot-glip.git"
+  },
+  "keywords": [
+    "glip",
+    "hubot"
+  ],
+  "author": "Tyler Long <tyler4long@gmail.com> (https://github.com/tylerlong)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tylerlong/hubot-glip/issues"
+  },
+  "homepage": "https://github.com/tylerlong/hubot-glip#readme"
+}
