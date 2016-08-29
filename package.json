@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "parent-require": "^1.0.0"
+  },
   "peerDependencies": {
     "hubot": ">=2.0"
   },

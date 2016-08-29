@@ -1,3 +1,10 @@
+try
+  {Robot,Adapter,TextMessage,User} = require 'hubot'
+catch
+  prequire = require('parent-require')
+  {Robot,Adapter,TextMessage,User} = prequire 'hubot'
+
+
 class Glip extends Adapter
 
   constructor: ->
