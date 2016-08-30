@@ -12,11 +12,10 @@ class GlipAdapter extends Adapter
     @robot.logger.info "Constructor"
 
   send: (envelope, strings...) ->
-    @robot.logger.info "Send"
-    @robot.logger.info strings[0]
+    @robot.logger.info "Send " + strings[0]
 
   reply: (envelope, strings...) ->
-    @robot.logger.info "Reply"
+    @robot.logger.info "Reply " + strings[0]
 
   run: ->
     @robot.logger.info "Run"
@@ -24,6 +23,11 @@ class GlipAdapter extends Adapter
     user = new User 1001, name: 'Sample User'
     message = new TextMessage user, 'Some Sample Message', 'MSG-001'
     @robot.receive message
+    setTimeout(
+      =>
+        @robot.receive message
+      3000
+    )
 
 
 module.exports = GlipAdapter
