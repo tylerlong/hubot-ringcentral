@@ -4,6 +4,8 @@ catch
   prequire = require('parent-require')
   {Robot,Adapter,TextMessage,User} = prequire 'hubot'
 
+Bot = require './bot'
+
 
 class GlipAdapter extends Adapter
 
@@ -21,7 +23,7 @@ class GlipAdapter extends Adapter
     @robot.logger.info "Run"
     @emit "connected"
     user = new User 1001, name: 'Sample User'
-    message = new TextMessage user, 'Some Sample Message', 'MSG-001'
+    message = new TextMessage user, 'hubot stars', 'MSG-001'
     message2 = new TextMessage user, 'hubot help', 'MSG-002'
     message3 = new TextMessage user, 'hubot map Xiamen', 'MSG-003'
     @robot.receive message
