@@ -22,34 +22,39 @@ class GlipAdapter extends Adapter
 
     @client.on 'message', (type, data) =>
       if (type == @client.type_ids.TYPE_ID_POST && data.text)
-        user = new User 1001, name: 'Sample User'
+        user = new User data.group_id, name: 'Sample User'
         message = new TextMessage user, data.text, 'MSG-' + data._id
         @robot.receive message
 
   send: (envelope, strings...) ->
-    @robot.logger.info "Send " + strings[0]
+    for str in strings
+      @robot.logger.info "Send " + str
+      @client.post envelope.user.id, str
 
   reply: (envelope, strings...) ->
-    @robot.logger.info "Reply " + strings[0]
+    for str in strings
+      @robot.logger.info "Reply " + str
+      @client.post envelope.user.id, str
 
   run: ->
     @robot.logger.info "Run"
 
     @client.start()
 
-    @emit "connected"
-    user = new User 1001, name: 'Sample User'
-    message = new TextMessage user, 'hubot stars', 'MSG-001'
-    message2 = new TextMessage user, 'hubot help', 'MSG-002'
-    message3 = new TextMessage user, 'hubot map Xiamen', 'MSG-003'
-    @robot.receive message
-    setTimeout(
-      =>
-        @robot.receive message
-        @robot.receive message2
-        @robot.receive message3
-      3000
-    )
+    @client.on 'started', =>
+      @emit "connected"
+      user = new User 1001, name: 'Sample User'
+      message = new TextMessage user, 'hubot stars', 'MSG-001'
+      message2 = new TextMessage user, 'hubot help', 'MSG-002'
+      message3 = new TextMessage user, 'hubot map Xiamen', 'MSG-003'
+      @robot.receive message
+      setTimeout(
+        =>
+          @robot.receive message
+          @robot.receive message2
+          @robot.receive message3
+        3000
+      )
 
 
 module.exports = GlipAdapter

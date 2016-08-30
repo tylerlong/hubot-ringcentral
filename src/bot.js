@@ -34,6 +34,7 @@ _.extend(Bot.prototype, event_emitter.prototype, id_utilities.prototype, {
 			return this.handle_error(error);
 		}
 		console.warn("UP AND RUNNING");
+		this.emit('started');
 	},
 	connect: function(callback) {
 		this.emit('connect');
