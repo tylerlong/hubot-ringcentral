@@ -16,7 +16,7 @@
 
 #### Testing your bot locally
 
-- `HUBOT_GLIP_EMAIL=you@email.com HUBOT_GLIP_PASSWORD=your-password ./bin/hubot --adapter glip`
+- `HUBOT_GLIP_EMAIL=you@email.com HUBOT_GLIP_PASSWORD=your-password ./bin/hubot -a glip`
 
 #### Deploying to Heroku
 

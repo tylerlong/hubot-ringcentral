@@ -4,7 +4,7 @@ catch
   prequire = require('parent-require')
   {Robot,Adapter,TextMessage,User} = prequire 'hubot'
 
-Bot = require './bot'
+GlipClient = require './bot'
 
 
 class GlipAdapter extends Adapter
@@ -12,6 +12,19 @@ class GlipAdapter extends Adapter
   constructor: ->
     super
     @robot.logger.info "Constructor"
+
+    @client = new GlipClient({
+      host: 'glip.com',
+      port: 443,
+      user: process.env.HUBOT_GLIP_EMAIL,
+      password: process.env.HUBOT_GLIP_PASSWORD
+    })
+
+    @client.on 'message', (type, data) =>
+      if (type == @client.type_ids.TYPE_ID_POST && data.text)
+        user = new User 1001, name: 'Sample User'
+        message = new TextMessage user, data.text, 'MSG-' + data._id
+        @robot.receive message
 
   send: (envelope, strings...) ->
     @robot.logger.info "Send " + strings[0]
@@ -21,6 +34,9 @@ class GlipAdapter extends Adapter
 
   run: ->
     @robot.logger.info "Run"
+
+    @client.start()
+
     @emit "connected"
     user = new User 1001, name: 'Sample User'
     message = new TextMessage user, 'hubot stars', 'MSG-001'
