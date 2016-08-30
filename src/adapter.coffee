@@ -5,10 +5,11 @@ catch
   {Robot,Adapter,TextMessage,User} = prequire 'hubot'
 
 
-class Glip extends Adapter
+class GlipAdapter extends Adapter
 
-  constructor: ->
+  constructor: (@robot, @options) ->
     super
+    @client = new GlipClient(@options)
     @robot.logger.info "Constructor"
 
   send: (envelope, strings...) ->
@@ -25,5 +26,4 @@ class Glip extends Adapter
     @robot.receive message
 
 
-exports.use = (robot) ->
-  new Glip robot
+module.exports = GlipAdapter

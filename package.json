@@ -2,9 +2,8 @@
   "name": "hubot-glip",
   "version": "1.0.0",
   "description": "Hubot adapter to use with Glip",
-  "main": "src/glip.coffee",
+  "main": "./glip",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "parent-require": "^1.0.0"
@@ -21,12 +20,18 @@
   },
   "keywords": [
     "glip",
-    "hubot"
+    "hubot",
+    "adapter",
+    "RingCentral"
   ],
   "author": "Tyler Long <tyler4long@gmail.com> (https://github.com/tylerlong)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/tylerlong/hubot-glip/issues"
   },
-  "homepage": "https://github.com/tylerlong/hubot-glip#readme"
+  "homepage": "https://github.com/tylerlong/hubot-glip#readme",
+  "engines": {
+    "node": ">= 0.10.x",
+    "npm": ">= 1.1.x"
+  }
 }
