@@ -29,8 +29,10 @@ This is a modified set of instructions based on the [instructions on the Hubot w
 - `heroku addons:create rediscloud:30`
 - Add the [config variables](#configuration). For example:
 
-        % heroku config:add HUBOT_GLIP_EMAIL=you@email.com
-        % heroku config:add HUBOT_GLIP_PASSWORD=your-password
+    ```
+    % heroku config:add HUBOT_GLIP_EMAIL=you@email.com
+    % heroku config:add HUBOT_GLIP_PASSWORD=your-password
+    ```
 
 - Deploy the bot:
 
