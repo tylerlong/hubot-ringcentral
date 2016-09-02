@@ -1,8 +1,8 @@
 try
-  {Robot,Adapter,TextMessage,User} = require 'hubot'
+  { Adapter, TextMessage, User } = require 'hubot'
 catch
   prequire = require('parent-require')
-  {Robot,Adapter,TextMessage,User} = prequire 'hubot'
+  { Adapter, TextMessage, User } = prequire 'hubot'
 
 GlipClient = require './bot'
 
@@ -43,18 +43,6 @@ class GlipAdapter extends Adapter
 
     @client.on 'started', =>
       @emit "connected"
-      user = new User 1001, name: 'Sample User'
-      message = new TextMessage user, 'hubot stars', 'MSG-001'
-      message2 = new TextMessage user, 'hubot help', 'MSG-002'
-      message3 = new TextMessage user, 'hubot map Xiamen', 'MSG-003'
-      @robot.receive message
-      setTimeout(
-        =>
-          @robot.receive message
-          @robot.receive message2
-          @robot.receive message3
-        3000
-      )
 
 
 module.exports = GlipAdapter
