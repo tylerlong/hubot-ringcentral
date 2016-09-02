@@ -3,9 +3,7 @@
 [Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
 
 
-## Getting Started
-
-#### Creating a new bot
+## Creating a new bot
 
 - `npm install -g hubot coffee-script yo generator-hubot`
 - `mkdir -p /path/to/hubot`
@@ -14,31 +12,10 @@
 - Initialize git and make your initial commit
 - Check out the [hubot docs](https://github.com/github/hubot/tree/master/docs) for further guidance on how to build your bot
 
-#### Testing your bot locally
 
-- `HUBOT_GLIP_EMAIL=you@email.com HUBOT_GLIP_PASSWORD=your-password ./bin/hubot -a glip`
+## Testing your bot
 
-#### Deploying to Heroku
-
-This is a modified set of instructions based on the [instructions on the Hubot wiki](https://github.com/github/hubot/blob/master/docs/deploying/heroku.md).
-
-- Follow the instructions above to create a hubot locally
-
-- Install [heroku toolbelt](https://toolbelt.heroku.com/) if you haven't already.
-- `heroku create my-company-glipbot`
-- `heroku addons:create rediscloud:30`
-- Add the [config variables](#configuration). For example:
-
-    ```
-    % heroku config:add HUBOT_GLIP_EMAIL=you@email.com
-    % heroku config:add HUBOT_GLIP_PASSWORD=your-password
-    ```
-
-- Deploy the bot:
-
-        % git push heroku master
-
-- Profit!
+- `HUBOT_GLIP_EMAIL=your@email.com HUBOT_GLIP_PASSWORD=your-password ./bin/hubot -a glip`
 
 
 ## Configuration
