@@ -29,13 +29,11 @@ class GlipAdapter extends Adapter
 
   send: (envelope, strings...) ->
     @robot.logger.info 'send ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n')
-    for str in strings
-      @client.post envelope.user.id, str
+    @client.post envelope.user.reply_to, strings.join('\n')
 
   reply: (envelope, strings...) ->
     @robot.logger.info 'reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n')
-    for str in strings
-      @client.post envelope.user.id, str
+    @client.post envelope.user.reply_to, strings.join('\n')
 
   run: ->
     @robot.logger.info "Run"
