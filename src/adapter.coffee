@@ -21,22 +21,20 @@ class GlipAdapter extends Adapter
     })
 
     @client.on 'message', (type, data) =>
-      @robot.logger JSON.stringify(data, null, 4)
+      @robot.logger.info type + ' : ' + JSON.stringify(data, null, 4)
       if (type == @client.type_ids.TYPE_ID_POST && data.text)
         user = new User data.group_id, name: 'Sample User'
         message = new TextMessage user, data.text, 'MSG-' + data._id
         @robot.receive message
 
   send: (envelope, strings...) ->
-    @robot.logger JSON.stringify(envelope, null, 4)
+    @robot.logger.info 'send ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n')
     for str in strings
-      @robot.logger.info "Send " + str
       @client.post envelope.user.id, str
 
   reply: (envelope, strings...) ->
-    @robot.logger JSON.stringify(envelope, null, 4)
+    @robot.logger.info 'reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n')
     for str in strings
-      @robot.logger.info "Reply " + str
       @client.post envelope.user.id, str
 
   run: ->
