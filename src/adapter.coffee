@@ -23,7 +23,7 @@ class GlipAdapter extends Adapter
     @client.on 'message', (type, data) =>
       @robot.logger.info type + ' : ' + JSON.stringify(data, null, 4)
       if (type == @client.type_ids.TYPE_ID_POST && data.text)
-        user = new User data.group_id, name: 'Sample User'
+        user = new User data.group_id, room: data.group_id, reply_to: data.group_id, name: 'Group #' + data.group_id
         message = new TextMessage user, data.text, 'MSG-' + data._id
         @robot.receive message
 
