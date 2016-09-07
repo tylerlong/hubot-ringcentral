@@ -34,7 +34,7 @@ _.extend(Bot.prototype, event_emitter.prototype, id_utilities.prototype, {
 			return this.handle_error(error);
 		}
 		console.warn("UP AND RUNNING");
-		this.emit('started');
+    this.emit('started');
 	},
 	connect: function(callback) {
 		this.emit('connect');
@@ -146,25 +146,88 @@ _.extend(Bot.prototype, event_emitter.prototype, id_utilities.prototype, {
 	},
 	process_object: function(object, callback) {
 		var id = object._id;
+		if (this.has_processed[id]) { return process.nextTick(callback); }
+		this.has_processed[id] = true;
 		var type = id_utilities.prototype.extract_type(id);
 		this.emit('message', type, object);
 		return process.nextTick(callback);
 	},
-	post: function(group_id, text) {
+	post: function(group_id, text, item_ids, item_data) {
+		items_ids = item_ids || [];
+		var self = this;
+		var post = {
+			created_at: +new Date(),
+			creator_id: this.user_id,
+			is_new: true,
+			item_ids: item_ids,
+			group_id: group_id,
+			text: text,
+			item_data: item_data,
+			at_mention_item_ids: [],
+			at_mention_non_item_ids: [],
+			from_group_id: group_id,
+			post_ids: []
+		};
 		this.request(
 			'/api/post',
 			'POST',
-			{
-				created_at: +new Date(),
-				creator_id: this.user_id,
-				is_new: true,
-				item_ids: [],
-				group_id: group_id,
-				text: text
-			},
+			post,
 			function(error, data) {
-				//console.warn(error, data);
+//				console.warn(error, data, post);
 			}
+		);
+	},
+	post_file_from_url: function(group_id, url, text) {
+		var self = this;
+		this.file_from_url(url, function(error, data) {
+			if (error) { return console.warn("ERROR POSTING FILE:", error); }
+			self.file_from_stored_file(data.body, group_id, function(error, file_response) {
+				if (error) { return console.warn(error); }
+				var file = file_response.body;
+				var item_data = { version_map: {}};
+				item_data.version_map[file._id] = 1;
+				self.post(group_id, text, [file._id], item_data);
+			});
+		});
+	},
+	file_from_stored_file: function(stored_file, group_id, callback) {
+		var matches = stored_file.download_url.match(/.*\/(.*)$/);
+		if (!matches) { return console.warn("NO MATCHES"); }
+		var name = matches[1].replace(/\?.*$/,'');
+		var ext_matches = name.match(/.*\.(.*)$/);
+		var ext = ext_matches ? ext_matches[1] : 'unknown';
+		this.request(
+			'/api/file',
+			'POST',
+			{
+				creator_id: this.user.id,
+				group_ids: [group_id],
+				is_new: true,
+				name: name,
+				no_post: true,
+				source: 'web',
+				type: ext,
+				versions: [
+					{
+						download_url: stored_file.download_url,
+						size: stored_file.size,
+						stored_file_id: stored_file._id,
+						url: stored_file.storage_url
+					}
+				]
+			},
+			callback
+		);
+	},
+	file_from_url: function(url, callback) {
+		this.request(
+			'/api/file-from-url',
+			'POST',
+			{
+				url: url,
+				for_file_type: true
+			},
+			callback
 		);
 	},
 	handle_disconnect: function(reason) {
