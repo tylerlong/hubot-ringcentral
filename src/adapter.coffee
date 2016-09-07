@@ -29,7 +29,11 @@ class GlipAdapter extends Adapter
 
   send: (envelope, strings...) ->
     @robot.logger.info 'send ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n')
-    @client.post envelope.user.reply_to, strings.join('\n')
+    if envelope.message_type == 'image_url' # send image by url
+      for str in strings
+        @client.post_file_from_url envelope.user.reply_to, str, ''
+    else
+      @client.post envelope.user.reply_to, strings.join('\n')
 
   reply: (envelope, strings...) ->
     @robot.logger.info 'reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n')
