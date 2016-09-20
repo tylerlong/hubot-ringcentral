@@ -14,7 +14,7 @@ class GlipAdapter extends Adapter
     @robot.logger.info "Constructor"
 
     @client = new GlipClient({
-      host: 'glip.com',
+      host: process.env.HUBOT_GLIP_HOST || 'glip.com',
       port: 443,
       user: process.env.HUBOT_GLIP_EMAIL,
       password: process.env.HUBOT_GLIP_PASSWORD

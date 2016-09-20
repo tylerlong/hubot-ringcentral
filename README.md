@@ -24,3 +24,4 @@ This adapter uses the following environment variables:
 
 - `HUBOT_GLIP_EMAIL` - this is the email account for the Glip user you would like to run Hubot under.
 - `HUBOT_GLIP_PASSWORD` - this is the password for the Glip user you would like to run Hubot under.
+- `HUBOT_GLIP_HOST` - this is the Glip host. Optional. By default it's `glip.com`. For QA it's `glipqa.com`.
