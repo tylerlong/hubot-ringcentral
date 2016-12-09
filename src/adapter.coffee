@@ -15,7 +15,7 @@ class GlipAdapter extends Adapter
 
     @client = new GlipClient({
       host: process.env.HUBOT_GLIP_HOST || 'glip.com',
-      port: 443,
+      port: process.env.HUBOT_GLIP_PORT || 443,
       user: process.env.HUBOT_GLIP_EMAIL,
       password: process.env.HUBOT_GLIP_PASSWORD
     })
