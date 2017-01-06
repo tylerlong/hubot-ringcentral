@@ -4,7 +4,7 @@ catch
   prequire = require('parent-require')
   { Adapter, TextMessage, User } = prequire 'hubot'
 
-GlipClient = require './bot'
+GlipSocket = require 'glip.socket.io'
 
 
 class GlipAdapter extends Adapter
@@ -13,7 +13,7 @@ class GlipAdapter extends Adapter
     super
     @robot.logger.info "Constructor"
 
-    @client = new GlipClient({
+    @client = new GlipSocket({
       host: process.env.HUBOT_GLIP_HOST || 'glip.com',
       port: process.env.HUBOT_GLIP_PORT || 443,
       user: process.env.HUBOT_GLIP_EMAIL,
