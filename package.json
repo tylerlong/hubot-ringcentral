@@ -7,12 +7,8 @@
     "upgrade": "ncu -ua && yarn upgrade"
   },
   "dependencies": {
-    "async": "^2.1.4",
-    "fast_bindall": "0.0.1",
     "glip.socket.io": "^0.1.0",
-    "parent-require": "^1.0.0",
-    "socket.io-client": "^1.7.2",
-    "underscore": "^1.8.3"
+    "parent-require": "^1.0.0"
   },
   "peerDependencies": {
     "hubot": ">=2.0"
@@ -36,9 +32,5 @@
   "bugs": {
     "url": "https://github.com/tylerlong/hubot-glip/issues"
   },
-  "homepage": "https://github.com/tylerlong/hubot-glip#readme",
-  "engines": {
-    "node": ">= 0.10.x",
-    "npm": ">= 1.1.x"
-  }
+  "homepage": "https://github.com/tylerlong/hubot-glip#readme"
 }
