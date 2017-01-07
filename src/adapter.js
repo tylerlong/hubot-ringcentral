@@ -20,20 +20,19 @@ class GlipAdapter extends Adapter {
     })
     this.client.on('message', (type, data) => {
       this.robot.logger.info(`${type} : ${JSON.stringify(data, null, 4)}`)
-      const user = new User(data.creator_id, {
-        room: data.group_id,
-        reply_to: data.group_id,
-        name: `User ${data.creator_id} from Group ${data.group_id}`
-      })
-      const message = new TextMessage(user, data.text, 'MSG-' + data._id)
-      this.robot.receive(message)
+      if (type === this.client.type_ids.TYPE_ID_POST && data.text && !data.deactivated) {
+        const user = new User(data.creator_id, {
+          room: data.group_id,
+          reply_to: data.group_id,
+          name: `User ${data.creator_id} from Group ${data.group_id}`
+        })
+        const message = new TextMessage(user, data.text, 'MSG-' + data._id)
+        this.robot.receive(message)
+      }
     })
   }
 
   send (envelope, string) {
-    if (!string) {
-      return
-    }
     this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
     if (envelope.message_type === 'image_url') { // send image by url
       this.client.post_file_from_url(envelope.user.reply_to, string, '')
@@ -43,9 +42,6 @@ class GlipAdapter extends Adapter {
   }
 
   reply (envelope, string) {
-    if (!string) {
-      return
-    }
     this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
     this.client.post(envelope.user.reply_to, string)
   }
