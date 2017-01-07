@@ -3,10 +3,11 @@
 [Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
 
 
-# Upcoming release (Rest API)
+# socket.io version
 
-The latest version is based on socket.io. And it is the default one if you don't specify explicitly.
-We are going to release a new version based on REST API. If you want to try it now, please `yarn add hubot-glip@next`.
+This is the prerelease version based on REST API.
+
+If you are looking for the socket.io version instead, please click [here](https://github.com/tylerlong/hubot-glip).
 
 
 ## Creating a new bot
@@ -19,9 +20,26 @@ We are going to release a new version based on REST API. If you want to try it n
 - Check out the [hubot docs](https://github.com/github/hubot/tree/master/docs) for further guidance on how to build your bot
 
 
+## Switch to prerelease version
+
+Update `package.json` and change `hubot-glip`'s version number to `next`.
+
+```
+...
+"hubot-glip": "next",
+...
+```
+
+
 ## Testing your bot
 
-- `HUBOT_GLIP_APP_KEY=appKey HUBOT_GLIP_APP_SECRET=appSecret HUBOT_GLIP_USERNAME=your@email.com HUBOT_GLIP_PASSWORD=your-password ./bin/hubot -a glip`
+```
+HUBOT_GLIP_APP_KEY=appKey \
+HUBOT_GLIP_APP_SECRET=appSecret \
+HUBOT_GLIP_USERNAME=your@email.com \
+HUBOT_GLIP_PASSWORD=your-password \
+./bin/hubot -a glip`
+```
 
 
 ## Configuration
