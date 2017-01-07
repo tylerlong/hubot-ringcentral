@@ -26,6 +26,7 @@ class GlipAdapter extends Adapter {
       extension: '',
       password: process.env.HUBOT_GLIP_PASSWORD
     }).then((response) => {
+      this.robot.logger.info('Logged in.')
       this.emit('connected')
       this.subscribe()
     }).catch((error) => {
@@ -37,13 +38,14 @@ class GlipAdapter extends Adapter {
   subscribe () {
     this.client.posts().subscribe((message) => {
       this.robot.logger.info(JSON.stringify(message, null, 4))
-      if (message.messageType === 'PostAdded' && message.post.text && message.post.text !== '') {
-        const user = new User(message.creatorId, {
-          room: message.groupId,
-          reply_to: message.groupId,
-          name: `User ${message.creatorId} from Group ${message.groupId}`
+      const post = message.post
+      if (message.messageType === 'PostAdded' && post.text && post.text !== '') {
+        const user = new User(post.creatorId, {
+          room: post.groupId,
+          reply_to: post.groupId,
+          name: `User ${post.creatorId} from Group ${post.groupId}`
         })
-        const hubotMessage = new TextMessage(user, message.text, 'MSG-' + message.id)
+        const hubotMessage = new TextMessage(user, post.text, 'MSG-' + post.id)
         this.robot.receive(hubotMessage)
       }
     })
