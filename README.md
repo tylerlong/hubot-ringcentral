@@ -38,7 +38,7 @@ HUBOT_GLIP_APP_KEY=appKey \
 HUBOT_GLIP_APP_SECRET=appSecret \
 HUBOT_GLIP_USERNAME=your@email.com \
 HUBOT_GLIP_PASSWORD=your-password \
-./bin/hubot -a glip`
+./bin/hubot -a glip
 ```
 
 
