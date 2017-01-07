@@ -55,4 +55,6 @@ class GlipAdapter extends Adapter {
   }
 }
 
-module.exports = GlipAdapter
+exports.use = function (robot) {
+  return new GlipAdapter(robot)
+}

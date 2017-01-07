@@ -1,13 +1,13 @@
 const path = require('path')
 
 module.exports = {
-  entry: './src/adapter.js',
+  entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'src'),
     filename: 'index.bundle.js',
     libraryTarget: 'commonjs2'
   },
-  externals: ['ws'],
+  externals: ['ws', 'hubot'],
   module: {
     noParse: ['ws'],
     loaders: [
