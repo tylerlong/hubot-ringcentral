@@ -9,8 +9,8 @@ const { Adapter, TextMessage, User } = hubot
 const GlipSocket = require('glip.socket.io')
 
 class GlipAdapter extends Adapter {
-  constructor () {
-    super()
+  constructor (robot) {
+    super(robot)
     this.robot.logger.info('Constructor')
     this.client = new GlipSocket({
       host: process.env.HUBOT_GLIP_HOST || 'glip.com',
