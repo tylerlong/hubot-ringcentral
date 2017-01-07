@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "0.7.3",
+  "version": "0.7.5",
   "description": "Hubot adapter to use with Glip",
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,8 @@
     "hubot": ">=2.0"
   },
   "devDependencies": {
-    "npm-check-updates": "^2.8.9"
+    "npm-check-updates": "^2.8.9",
+    "standard": "^8.6.0"
   },
   "repository": {
     "type": "git",

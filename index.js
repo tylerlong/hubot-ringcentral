@@ -1,5 +1,5 @@
-const GlipAdapter = require('./src/adapter');
+const GlipAdapter = require('./src/adapter')
 
-exports.use = function(robot) {
-  return new GlipAdapter(robot);
-};
+exports.use = function (robot) {
+  return new GlipAdapter(robot)
+}
