@@ -22,7 +22,11 @@ We also have a [prerelease version](https://github.com/tylerlong/hubot-glip/tree
 
 ## Testing your bot
 
-- `HUBOT_GLIP_EMAIL=your@email.com HUBOT_GLIP_PASSWORD=your-password ./bin/hubot -a glip`
+```
+HUBOT_GLIP_EMAIL=your@email.com \
+HUBOT_GLIP_PASSWORD=your-password \
+./bin/hubot -a glip
+```
 
 
 ## Configuration
