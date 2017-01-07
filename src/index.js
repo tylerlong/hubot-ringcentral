@@ -11,7 +11,6 @@ const GlipClient = require('glip-client')
 class GlipAdapter extends Adapter {
   constructor (robot) {
     super(robot)
-    this.robot.logger.info('Constructor')
     this.client = new GlipClient({
       server: process.env.HUBOT_GLIP_SERVER || 'https://platform.ringcentral.com',
       appKey: process.env.HUBOT_GLIP_APP_KEY,
@@ -30,7 +29,8 @@ class GlipAdapter extends Adapter {
       this.emit('connected')
       this.subscribe()
     }).catch((error) => {
-      this.robot.logger.error(`Login failed: ${error}`)
+      this.robot.logger.error(`Login failed:`)
+      this.robot.logger.error(error)
     })
   }
 
@@ -43,8 +43,8 @@ class GlipAdapter extends Adapter {
           reply_to: message.groupId,
           name: `User ${message.creatorId} from Group ${message.groupId}`
         })
-        const message = new TextMessage(user, message.text, 'MSG-' + message.id)
-        this.robot.receive(message)
+        const hubotMessage = new TextMessage(user, message.text, 'MSG-' + message.id)
+        this.robot.receive(hubotMessage)
       }
     })
   }
