@@ -36,8 +36,8 @@ Update `package.json` and change `hubot-glip`'s version number to `next`.
 ```
 HUBOT_GLIP_APP_KEY=appKey \
 HUBOT_GLIP_APP_SECRET=appSecret \
-HUBOT_GLIP_USERNAME=your@email.com \
-HUBOT_GLIP_PASSWORD=your-password \
+HUBOT_GLIP_USERNAME=username \
+HUBOT_GLIP_PASSWORD=password \
 ./bin/hubot -a glip
 ```
 
@@ -48,6 +48,6 @@ This adapter uses the following environment variables:
 
 - `HUBOT_GLIP_APP_KEY` - RingCentral App Key.
 - `HUBOT_GLIP_APP_SECRET` - RingCentral App Secret.
-- `HUBOT_GLIP_USERNAME` - this is the email account for the Glip user you would like to run Hubot under.
-- `HUBOT_GLIP_PASSWORD` - this is the password for the Glip user you would like to run Hubot under.
+- `HUBOT_GLIP_USERNAME` - this is the RingCentral username you would like to run Hubot under.
+- `HUBOT_GLIP_PASSWORD` - this is the password for the RingCentral user you would like to run Hubot under.
 - `HUBOT_GLIP_SERVER` - this is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`.
