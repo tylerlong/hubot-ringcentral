@@ -23,12 +23,14 @@ class GlipAdapter extends Adapter {
 
   login () {
     this.client.authorize({
-      username: process.env.USERNAME,
+      username: process.env.HUBOT_GLIP_USERNAME,
       extension: '',
-      password: process.env.PASSWORD
+      password: process.env.HUBOT_GLIP_PASSWORD
     }).then((response) => {
       this.emit('connected')
       this.subscribe()
+    }).catch((error) => {
+      this.robot.logger.error(`Login failed: ${error}`)
     })
   }
 
