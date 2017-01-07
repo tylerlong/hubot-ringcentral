@@ -30,22 +30,24 @@ class GlipAdapter extends Adapter {
     })
   }
 
-  send (envelope) {
-    const strings = arguments.slice(1)
-    this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n'))
+  send (envelope, string) {
+    if (!string) {
+      return
+    }
+    this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
     if (envelope.message_type === 'image_url') { // send image by url
-      strings.forEach((str) => {
-        this.client.post_file_from_url(envelope.user.reply_to, str, '')
-      })
+      this.client.post_file_from_url(envelope.user.reply_to, string, '')
     } else {
-      this.client.post(envelope.user.reply_to, strings.join('\n'))
+      this.client.post(envelope.user.reply_to, string)
     }
   }
 
-  reply (envelope) {
-    const strings = arguments.slice(1)
-    this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n'))
-    this.client.post(envelope.user.reply_to, strings.join('\n'))
+  reply (envelope, string) {
+    if (!string) {
+      return
+    }
+    this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
+    this.client.post(envelope.user.reply_to, string)
   }
 
   run () {
