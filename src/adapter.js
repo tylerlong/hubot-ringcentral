@@ -30,7 +30,8 @@ class GlipAdapter extends Adapter {
     })
   }
 
-  send (envelope, strings) {
+  send (envelope) {
+    const strings = arguments.slice(1)
     this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n'))
     if (envelope.message_type === 'image_url') { // send image by url
       strings.forEach((str) => {
@@ -41,7 +42,8 @@ class GlipAdapter extends Adapter {
     }
   }
 
-  reply (envelope, strings) {
+  reply (envelope) {
+    const strings = arguments.slice(1)
     this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + strings.join('\n\n'))
     this.client.post(envelope.user.reply_to, strings.join('\n'))
   }
