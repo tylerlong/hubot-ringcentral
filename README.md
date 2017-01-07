@@ -3,6 +3,12 @@
 [Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
 
 
+# Upcoming release
+
+The latest version is based on socket.io. And it is the default one if you don't specify explicitly.
+We are going to release a new version based on REST API. If you want to try it now, please `yarn add hubot-glip@next`.
+
+
 ## Creating a new bot
 
 - `npm install -g hubot coffee-script yo generator-hubot`
