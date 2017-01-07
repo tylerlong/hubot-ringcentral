@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "0.8.5",
+  "version": "2.0.0-alpha.1",
   "description": "Hubot adapter to use with Glip",
   "main": "src/index.bundle.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "build": "webpack --progress --colors --watch"
   },
   "dependencies": {
-    "glip.socket.io": "^0.1.0",
+    "glip-client": "^0.4.1",
     "parent-require": "^1.0.0"
   },
   "peerDependencies": {

@@ -6,27 +6,42 @@ try {
   hubot = prequire('hubot')
 }
 const { Adapter, TextMessage, User } = hubot
-const GlipSocket = require('glip.socket.io')
+const GlipClient = require('glip-client')
 
 class GlipAdapter extends Adapter {
   constructor (robot) {
     super(robot)
     this.robot.logger.info('Constructor')
-    this.client = new GlipSocket({
-      host: process.env.HUBOT_GLIP_HOST || 'glip.com',
-      port: process.env.HUBOT_GLIP_PORT || 443,
-      user: process.env.HUBOT_GLIP_EMAIL,
-      password: process.env.HUBOT_GLIP_PASSWORD
+    this.client = new GlipClient({
+      server: process.env.HUBOT_GLIP_SERVER || 'https://platform.ringcentral.com',
+      appKey: process.env.HUBOT_GLIP_APP_KEY,
+      appSecret: process.env.HUBOT_GLIP_APP_SECRET,
+      appName: 'Glip Chatbot',
+      appVersion: '1.0.0'
     })
-    this.client.on('message', (type, data) => {
-      this.robot.logger.info(`${type} : ${JSON.stringify(data, null, 4)}`)
-      if (type === this.client.type_ids.TYPE_ID_POST && data.text && !data.deactivated) {
-        const user = new User(data.creator_id, {
-          room: data.group_id,
-          reply_to: data.group_id,
-          name: `User ${data.creator_id} from Group ${data.group_id}`
+  }
+
+  login () {
+    this.client.authorize({
+      username: process.env.USERNAME,
+      extension: '',
+      password: process.env.PASSWORD
+    }).then((response) => {
+      this.emit('connected')
+      this.subscribe()
+    })
+  }
+
+  subscribe () {
+    this.client.posts().subscribe((message) => {
+      this.robot.logger.info(JSON.stringify(message, null, 4))
+      if (message.messageType === 'PostAdded' && message.post.text && message.post.text !== '') {
+        const user = new User(message.creatorId, {
+          room: message.groupId,
+          reply_to: message.groupId,
+          name: `User ${message.creatorId} from Group ${message.groupId}`
         })
-        const message = new TextMessage(user, data.text, 'MSG-' + data._id)
+        const message = new TextMessage(user, message.text, 'MSG-' + message.id)
         this.robot.receive(message)
       }
     })
@@ -34,24 +49,17 @@ class GlipAdapter extends Adapter {
 
   send (envelope, string) {
     this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
-    if (envelope.message_type === 'image_url') { // send image by url
-      this.client.post_file_from_url(envelope.user.reply_to, string, '')
-    } else {
-      this.client.post(envelope.user.reply_to, string)
-    }
+    this.client.posts().post({ groupId: envelope.user.reply_to, text: string })
   }
 
   reply (envelope, string) {
     this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
-    this.client.post(envelope.user.reply_to, string)
+    this.client.posts().post({ groupId: envelope.user.reply_to, text: string })
   }
 
   run () {
     this.robot.logger.info('Run')
-    this.client.start()
-    this.client.on('started', () => {
-      this.emit('connected')
-    })
+    this.login()
   }
 }
 
