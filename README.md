@@ -3,13 +3,6 @@
 [Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
 
 
-# socket.io version
-
-This is the prerelease version based on REST API.
-
-If you are looking for the socket.io version instead, please click [here](https://github.com/tylerlong/hubot-glip/tree/master).
-
-
 ## Creating a new bot
 
 - `npm install -g hubot coffee-script yo generator-hubot`
@@ -18,15 +11,6 @@ If you are looking for the socket.io version instead, please click [here](https:
 - `yo hubot` and enter 'glip' (no quotes) when prompted for the adapter
 - Initialize git and make your initial commit
 - Check out the [hubot docs](https://github.com/github/hubot/tree/master/docs) for further guidance on how to build your bot
-
-
-## Switch to prerelease version
-
-Update `package.json` and change `hubot-glip`'s version number to `next`.
-
-```
-"hubot-glip": "next",
-```
 
 
 ## Testing your bot
