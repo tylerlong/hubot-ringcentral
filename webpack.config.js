@@ -1,25 +1,23 @@
-const path = require('path')
+import path from 'path'
+import nodeExternals from 'webpack-node-externals'
 
-module.exports = {
-  entry: './src/index.js',
+const config = {
+  target: 'node',
+  externals: [nodeExternals()],
+  entry: {
+    'index': './src/index.js'
+  },
   output: {
     path: path.join(__dirname, 'src'),
-    filename: 'index.bundle.js',
+    filename: '[name].bundle.js',
     libraryTarget: 'commonjs2'
   },
-  externals: ['ws', 'hubot'],
   module: {
-    noParse: ['ws'],
-    loaders: [
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
-      },
-      {
-        test: /\.js$/,
+    rules: [{
+      test: /\.js$/,
+      use: {
         loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
+        options: {
           presets: [
             ['env', {
               'targets': {
@@ -29,7 +27,8 @@ module.exports = {
           ]
         }
       }
-    ]
-  },
-  target: 'node'
+    }]
+  }
 }
+
+export default [config]
