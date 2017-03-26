@@ -7,7 +7,7 @@
 
 This is the prerelease version based on REST API.
 
-If you are looking for the socket.io version instead, please click [here](https://github.com/tylerlong/hubot-glip).
+If you are looking for the socket.io version instead, please click [here](https://github.com/tylerlong/hubot-glip/tree/master).
 
 
 ## Creating a new bot
@@ -25,9 +25,7 @@ If you are looking for the socket.io version instead, please click [here](https:
 Update `package.json` and change `hubot-glip`'s version number to `next`.
 
 ```
-...
 "hubot-glip": "next",
-...
 ```
 
 
