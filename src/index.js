@@ -13,7 +13,7 @@ class GlipAdapter extends Adapter {
     super(robot)
     this.robot.logger.info('Constructor')
     this.client = new GlipSocket({
-      host: process.env.HUBOT_GLIP_HOST || 'glip.com',
+      host: process.env.HUBOT_GLIP_HOST || 'app.glip.com',
       port: process.env.HUBOT_GLIP_PORT || 443,
       user: process.env.HUBOT_GLIP_EMAIL,
       password: process.env.HUBOT_GLIP_PASSWORD
