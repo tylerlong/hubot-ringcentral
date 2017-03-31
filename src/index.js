@@ -38,8 +38,8 @@ class GlipAdapter extends Adapter {
   subscribe () {
     this.client.posts().subscribe((message) => {
       this.robot.logger.info(JSON.stringify(message, null, 4))
-      const post = message.post
-      if (message.messageType === 'PostAdded' && post.text && post.text !== '') {
+      const post = message.post || message
+      if ((message.messageType || message.eventType) === 'PostAdded' && post.text && post.text !== '') {
         const user = new User(post.creatorId, {
           room: post.groupId,
           reply_to: post.groupId,
