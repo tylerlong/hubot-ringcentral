@@ -1,3 +1,6 @@
+import RingCentral, { SERVER_PRODUCTION } from 'ringcentral-ts'
+import pkg from '../package.json'
+
 let hubot = null
 try {
   hubot = require('hubot')
@@ -7,22 +10,20 @@ try {
 }
 
 const { Adapter, TextMessage, User } = hubot
-const GlipClient = require('glip-client')
 
 class GlipAdapter extends Adapter {
   constructor (robot) {
     super(robot)
-    this.client = new GlipClient({
-      server: process.env.HUBOT_GLIP_SERVER || 'https://platform.ringcentral.com',
+    this.client = new RingCentral({
+      server: process.env.HUBOT_GLIP_SERVER || SERVER_PRODUCTION,
       appKey: process.env.HUBOT_GLIP_APP_KEY,
-      appSecret: process.env.HUBOT_GLIP_APP_SECRET,
-      appName: 'Glip Chatbot',
-      appVersion: '1.0.0'
+      appSecret: process.env.HUBOT_GLIP_APP_SECRET
     })
+    this.client.agents.push(`${pkg.name}/${pkg.version}`)
   }
 
   login () {
-    this.client.authorize({
+    this.client.auth({
       username: process.env.HUBOT_GLIP_USERNAME,
       extension: process.env.HUBOT_GLIP_EXTENSION,
       password: process.env.HUBOT_GLIP_PASSWORD
@@ -37,7 +38,8 @@ class GlipAdapter extends Adapter {
   }
 
   subscribe () {
-    this.client.posts().subscribe((message) => {
+    const subscription = this.client.createSubscription()
+    subscription.onMessage(message => {
       this.robot.logger.info(JSON.stringify(message, null, 4))
       const post = message.post || message
       if ((message.messageType || message.eventType) === 'PostAdded' && post.text && post.text !== '') {
@@ -50,16 +52,21 @@ class GlipAdapter extends Adapter {
         this.robot.receive(hubotMessage)
       }
     })
+    subscription.subscribe(['/glip/posts']).then(subscription => {
+      this.robot.logger.info('Subscription created')
+    }, e => {
+      this.robot.logger.error(e)
+    })
   }
 
   send (envelope, string) {
     this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
-    this.client.posts().post({ groupId: envelope.user.reply_to, text: string })
+    this.client.glip().posts().post({ groupId: envelope.user.reply_to, text: string })
   }
 
   reply (envelope, string) {
     this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
-    this.client.posts().post({ groupId: envelope.user.reply_to, text: string })
+    this.client.glip().posts().post({ groupId: envelope.user.reply_to, text: string })
   }
 
   run () {
