@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "Hubot adapter to use with Glip",
   "main": "src/index.bundle.js",
   "scripts": {

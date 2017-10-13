@@ -20,6 +20,11 @@ class GlipAdapter extends Adapter {
       appSecret: process.env.HUBOT_GLIP_APP_SECRET
     })
     this.client.agents.push(`${pkg.name}/${pkg.version}`)
+
+    this.robot.router.get('/oauth', (req, res) => {
+      this.robot.logger.info(req)
+      this.robot.logger.info(res)
+    })
   }
 
   login () {

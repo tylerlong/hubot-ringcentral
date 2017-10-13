@@ -19,9 +19,7 @@
 HUBOT_GLIP_SERVER=https://platform.ringcentral.com \
 HUBOT_GLIP_APP_KEY=appKey \
 HUBOT_GLIP_APP_SECRET=appSecret \
-HUBOT_GLIP_USERNAME=username \
-HUBOT_GLIP_EXTENSION=extension \
-HUBOT_GLIP_PASSWORD=password \
+EXPRESS_PORT=8080 \
 ./bin/hubot -a glip
 ```
 
@@ -32,7 +30,5 @@ This adapter uses the following environment variables:
 
 - `HUBOT_GLIP_APP_KEY` - RingCentral App Key.
 - `HUBOT_GLIP_APP_SECRET` - RingCentral App Secret.
-- `HUBOT_GLIP_USERNAME` - this is the RingCentral username you would like to run Hubot under.
-- `HUBOT_GLIP_EXTENSION` - this is the RingCentral extension you would like to run Hubot under, set it to empty string if `HUBOT_GLIP_USERNAME` is a direct number.
-- `HUBOT_GLIP_PASSWORD` - this is the password for the RingCentral user you would like to run Hubot under.
 - `HUBOT_GLIP_SERVER` - this is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`.
+- `EXPRESS_PORT` - express web server port number.
