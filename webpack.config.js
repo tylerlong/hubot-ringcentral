@@ -18,13 +18,7 @@ const config = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: [
-            ['env', {
-              'targets': {
-                'node': 4.2
-              }
-            }]
-          ]
+          presets: [['env', { 'targets': { 'node': '4.8.4' } }]]
         }
       }
     }]

@@ -1,10 +1,10 @@
 {
   "name": "hubot-glip",
-  "version": "2.0.2",
+  "version": "2.0.4",
   "description": "Hubot adapter to use with Glip",
   "main": "src/index.bundle.js",
   "scripts": {
-    "upgrade": "ncu -ua && yarn upgrade",
+    "upgrade": "yarn-upgrade-all",
     "build": "node -r babel-register node_modules/.bin/webpack --progress --colors"
   },
   "dependencies": {
@@ -15,13 +15,13 @@
     "hubot": "^2.19.0"
   },
   "devDependencies": {
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-env": "^1.2.2",
-    "npm-check-updates": "^2.10.4",
-    "standard": "^9.0.2",
-    "webpack": "^2.3.2",
-    "webpack-node-externals": "^1.5.4"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "standard": "^10.0.3",
+    "webpack": "^3.7.1",
+    "webpack-node-externals": "^1.6.0",
+    "yarn-upgrade-all": "^0.2.0"
   },
   "repository": {
     "type": "git",

@@ -5,6 +5,7 @@ try {
   const prequire = require('parent-require')
   hubot = prequire('hubot')
 }
+
 const { Adapter, TextMessage, User } = hubot
 const GlipClient = require('glip-client')
 
