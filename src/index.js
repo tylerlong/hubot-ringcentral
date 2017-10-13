@@ -41,8 +41,8 @@ class GlipAdapter extends Adapter {
     const subscription = this.client.createSubscription()
     subscription.onMessage(message => {
       this.robot.logger.info(JSON.stringify(message, null, 4))
-      const post = message.post || message
-      if ((message.messageType || message.eventType) === 'PostAdded' && post.text && post.text !== '') {
+      const post = message.body
+      if (post.eventType === 'PostAdded' && post.text && post.text !== '') {
         const user = new User(post.creatorId, {
           room: post.groupId,
           reply_to: post.groupId,
