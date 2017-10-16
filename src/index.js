@@ -33,6 +33,7 @@ class GlipAdapter extends Adapter {
         res.status(200)
         res.send('success')
         this.robot.logger.info('oauth is successful')
+        this._subscribe()
       }).catch(e => {
         res.status(500)
         res.send(e.message)
@@ -41,22 +42,7 @@ class GlipAdapter extends Adapter {
     })
   }
 
-  login () {
-    this.client.auth({
-      username: process.env.HUBOT_GLIP_USERNAME,
-      extension: process.env.HUBOT_GLIP_EXTENSION,
-      password: process.env.HUBOT_GLIP_PASSWORD
-    }).then((response) => {
-      this.robot.logger.info('Logged in.')
-      this.emit('connected')
-      this.subscribe()
-    }).catch((error) => {
-      this.robot.logger.error(`Login failed:`)
-      this.robot.logger.error(error)
-    })
-  }
-
-  subscribe () {
+  _subscribe () {
     const subscription = this.client.createSubscription()
     subscription.onMessage(message => {
       this.robot.logger.info(JSON.stringify(message, null, 4))
@@ -78,6 +64,10 @@ class GlipAdapter extends Adapter {
     })
   }
 
+  subscribe () {
+
+  }
+
   send (envelope, string) {
     this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
     this.client.glip().posts().post({ groupId: envelope.user.reply_to, text: string })
@@ -90,7 +80,6 @@ class GlipAdapter extends Adapter {
 
   run () {
     this.robot.logger.info('Run')
-    this.login()
   }
 }
 
