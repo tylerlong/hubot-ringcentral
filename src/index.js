@@ -29,7 +29,8 @@ class GlipAdapter extends Adapter {
         return
       }
       this.robot.logger.info(req.query.code)
-      this.client.oauth(req.query.code, `http://localhost:${process.env.EXPRESS_PORT}/oauth`).then(() => {
+      this.client.oauth(req.query.code, `${process.env.HUBOT_GLIP_BOT_SERVER}/oauth`).then(() => {
+        res.status(200)
         res.send('success')
         this.robot.logger.info('oauth is successful')
       }).catch(e => {

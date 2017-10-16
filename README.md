@@ -19,7 +19,7 @@
 HUBOT_GLIP_SERVER=https://platform.ringcentral.com \
 HUBOT_GLIP_APP_KEY=appKey \
 HUBOT_GLIP_APP_SECRET=appSecret \
-EXPRESS_PORT=8080 \
+HUBOT_GLIP_BOT_SERVER=https://the-bot-server \
 ./bin/hubot -a glip
 ```
 
@@ -30,5 +30,5 @@ This adapter uses the following environment variables:
 
 - `HUBOT_GLIP_APP_KEY` - RingCentral App Key.
 - `HUBOT_GLIP_APP_SECRET` - RingCentral App Secret.
-- `HUBOT_GLIP_SERVER` - this is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`.
-- `EXPRESS_PORT` - express web server port number.
+- `HUBOT_GLIP_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`.
+- `HUBOT_GLIP_BOT_SERVER` - The server that your bot is running on.
