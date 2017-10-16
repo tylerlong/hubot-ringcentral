@@ -26,15 +26,16 @@ class GlipAdapter extends Adapter {
         res.status(500)
         res.send({'Error': "Looks like we're not getting code."})
         this.robot.logger.error('Looks like we are not getting code.')
+        return
       }
       this.robot.logger.info(req.query.code)
       this.client.oauth(req.query.code, `http://localhost:${process.env.EXPRESS_PORT}/oauth`).then(() => {
-        this.robot.logger.info('oauth is successful')
         res.send('success')
+        this.robot.logger.info('oauth is successful')
       }).catch(e => {
-        this.robot.logger.error(e)
         res.status(500)
         res.send(e.message)
+        this.robot.logger.error(e)
       })
     })
   }
