@@ -54,6 +54,7 @@ class GlipAdapter extends Adapter {
   }
 
   _subscribe () {
+    this.emit('connected')
     const subscription = this.client.createSubscription()
     subscription.onMessage(message => {
       this.robot.logger.info(JSON.stringify(message, null, 4))
