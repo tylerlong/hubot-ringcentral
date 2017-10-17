@@ -27,6 +27,7 @@ class GlipAdapter extends Adapter {
 
     this.client.getToken().then(() => {
       this.robot.logger.info('Token restored from file')
+      this._subscribe()
     }).catch((e) => {
       this.robot.logger.error('No saved token detected. You need to add the bot to Glip first.')
     })
