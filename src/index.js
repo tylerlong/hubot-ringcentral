@@ -26,9 +26,9 @@ class GlipAdapter extends Adapter {
     this.client.agents.push(`${pkg.name}/${pkg.version}`)
 
     this.client.getToken().then(() => {
-      this.robot.logger.info('Key restored from file')
+      this.robot.logger.info('Token restored from file')
     }).catch((e) => {
-      this.robot.logger.error(e)
+      this.robot.logger.error('No saved token detected. You need to add the bot to Glip first.')
     })
 
     this.robot.router.get('/oauth', (req, res) => {
