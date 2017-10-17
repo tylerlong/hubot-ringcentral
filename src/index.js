@@ -1,5 +1,8 @@
 import RingCentral, { SERVER_PRODUCTION } from 'ringcentral-ts'
+import FileTotkenStorage from 'ringcentral-ts/FileTokenStore'
 import pkg from '../package.json'
+
+const tokenStore = new FileTotkenStorage('./tokenStore.json')
 
 let hubot = null
 try {
@@ -15,16 +18,23 @@ class GlipAdapter extends Adapter {
   constructor (robot) {
     super(robot)
     this.client = new RingCentral({
+      tokenStore,
       server: process.env.HUBOT_GLIP_SERVER || SERVER_PRODUCTION,
       appKey: process.env.HUBOT_GLIP_APP_KEY,
       appSecret: process.env.HUBOT_GLIP_APP_SECRET
     })
     this.client.agents.push(`${pkg.name}/${pkg.version}`)
 
+    this.client.getToken().then(() => {
+      this.robot.logger.info('Key restored from file')
+    }).catch((e) => {
+      this.robot.logger.error(e)
+    })
+
     this.robot.router.get('/oauth', (req, res) => {
       if (!req.query.code) {
         res.status(500)
-        res.send({'Error': "Looks like we're not getting code."})
+        res.send({ 'Error': "Looks like we're not getting code." })
         this.robot.logger.error('Looks like we are not getting code.')
         return
       }
