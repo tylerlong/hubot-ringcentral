@@ -16,7 +16,7 @@
 ## Testing your bot
 
 ```
-HUBOT_GLIP_SERVER=https://platform.ringcentral.com \
+HUBOT_GLIP_SERVER=https://platform.devtest.ringcentral.com \
 HUBOT_GLIP_APP_KEY=appKey \
 HUBOT_GLIP_APP_SECRET=appSecret \
 HUBOT_GLIP_BOT_SERVER=https://the-bot-server \
@@ -30,5 +30,5 @@ This adapter uses the following environment variables:
 
 - `HUBOT_GLIP_APP_KEY` - RingCentral App Key.
 - `HUBOT_GLIP_APP_SECRET` - RingCentral App Secret.
-- `HUBOT_GLIP_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`.
+- `HUBOT_GLIP_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
 - `HUBOT_GLIP_BOT_SERVER` - The server that your bot is running on.
