@@ -39,3 +39,10 @@ This adapter uses the following environment variables:
 https://github.com/tylerlong/glip-hubot-t
 
 You can simply fork it, clone it and write your own code based on it.
+
+
+## Note
+
+When you create the app on RingCentral. You need to set the OAuth Redirect URI to `${HUBOT_GLIP_BOT_SERVER}/oauth`.
+
+For example, if your bot is running on local with ngrok url `https://xxxxx.ngrok.io`, you should set the OAuth Redirect URI to `https://xxxxx.ngrok.io/oauth`.
