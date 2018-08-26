@@ -1,5 +1,7 @@
 # hubot-glip
 
+## This library is out-of-date. [Updated process](https://medium.com/ringcentral-developers/latest-glip-bot-provision-flow-a626a8dd0d98)
+
 [Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
 
 
