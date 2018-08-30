@@ -1,11 +1,23 @@
 {
   "name": "hubot-glip",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "description": "Hubot adapter to use with Glip",
-  "main": "src/index.bundle.js",
+  "keywords": [
+    "glip",
+    "hubot",
+    "adapter",
+    "RingCentral"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylerlong/hubot-glip.git"
+  },
+  "author": "Tyler Long <tyler4long@gmail.com> (https://github.com/tylerlong)",
+  "license": "MIT",
+  "main": "dist/main.js",
+  "module": "src/index.js",
   "scripts": {
-    "upgrade": "yarn-upgrade-all",
-    "build": "node -r babel-register node_modules/.bin/webpack --progress --colors"
+    "build": "webpack --progress --colors"
   },
   "dependencies": {
     "parent-require": "^1.0.0",
@@ -15,28 +27,16 @@
     "hubot": "^3.1.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.0",
     "babel-preset-env": "^1.7.0",
+    "eslint-plugin-html": "^4.0.5",
     "standard": "^12.0.1",
     "webpack": "^4.17.1",
-    "webpack-node-externals": "^1.7.2",
+    "webpack-cli": "^3.1.0",
     "yarn-upgrade-all": "^0.3.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tylerlong/hubot-glip.git"
-  },
-  "keywords": [
-    "glip",
-    "hubot",
-    "adapter",
-    "RingCentral"
-  ],
-  "author": "Tyler Long <tyler4long@gmail.com> (https://github.com/tylerlong)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tylerlong/hubot-glip/issues"
-  },
-  "homepage": "https://github.com/tylerlong/hubot-glip#readme"
+  "files": [
+    "dist/*",
+    "src/*",
+    "yarn.lock"
+  ]
 }
