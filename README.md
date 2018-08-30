@@ -1,7 +1,5 @@
 # hubot-glip
 
-## This library is out-of-date. [Updated process](https://medium.com/ringcentral-developers/latest-glip-bot-provision-flow-a626a8dd0d98)
-
 [Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
 
 
@@ -34,13 +32,6 @@ This adapter uses the following environment variables:
 - `HUBOT_GLIP_APP_SECRET` - RingCentral App Secret.
 - `HUBOT_GLIP_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
 - `HUBOT_GLIP_BOT_SERVER` - The server that your bot is running on.
-
-
-## Demo bot
-
-https://github.com/tylerlong/glip-hubot-t
-
-You can simply fork it, clone it and write your own code based on it.
 
 
 ## Note
