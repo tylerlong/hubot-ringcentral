@@ -1,8 +1,5 @@
-import RingCentral, { SERVER_PRODUCTION } from 'ringcentral-ts'
-import FileTotkenStorage from 'ringcentral-ts/FileTokenStore'
+import RingCentral from 'ringcentral-js-concise'
 import pkg from '../package.json'
-
-const tokenStore = new FileTotkenStorage('./tokenStore.json')
 
 let hubot = null
 try {
@@ -17,12 +14,11 @@ const { Adapter, TextMessage, User } = hubot
 class GlipAdapter extends Adapter {
   constructor (robot) {
     super(robot)
-    this.client = new RingCentral({
-      tokenStore,
-      server: process.env.HUBOT_GLIP_SERVER || SERVER_PRODUCTION,
-      appKey: process.env.HUBOT_GLIP_APP_KEY,
-      appSecret: process.env.HUBOT_GLIP_APP_SECRET
-    })
+    this.client = new RingCentral(
+      process.env.HUBOT_GLIP_APP_KEY,
+      process.env.HUBOT_GLIP_APP_SECRET,
+      process.env.HUBOT_GLIP_SERVER || RingCentral.PRODUCTION_SERVER
+    )
     this.client.agents.push(`${pkg.name}/${pkg.version}`)
 
     this.client.getToken().then(() => {
