@@ -1,11 +1,10 @@
 export default {
+  target: 'node',
   mode: 'production',
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
-    library: 'HubotGlip',
-    libraryTarget: 'umd',
-    globalObject: 'this' // fix window undefined issue in node
+    libraryTarget: 'commonjs2'
   },
   externals: {
     hubot: {

@@ -5,7 +5,7 @@
 
 ## Creating a new bot
 
-- `npm install -g hubot coffee-script yo generator-hubot`
+- `npm install -g hubot coffeescript yo generator-hubot`
 - `mkdir -p /path/to/hubot`
 - `cd /path/to/hubot`
 - `yo hubot` and enter 'glip' (no quotes) when prompted for the adapter
