@@ -20,7 +20,6 @@
     "release": "webpack --progress --colors"
   },
   "dependencies": {
-    "parent-require": "^1.0.0",
     "ringcentral-js-concise": "^0.5.5"
   },
   "peerDependencies": {

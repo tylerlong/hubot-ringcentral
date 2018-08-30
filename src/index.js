@@ -1,15 +1,7 @@
 import RingCentral from 'ringcentral-js-concise'
 import pkg from '../package.json'
 
-let hubot = null
-try {
-  hubot = require('hubot')
-} catch (_) {
-  const prequire = require('parent-require')
-  hubot = prequire('hubot')
-}
-
-const { Adapter, TextMessage, User } = hubot
+const { Adapter, TextMessage, User } = global.hubot
 
 class GlipAdapter extends Adapter {
   constructor (robot) {
