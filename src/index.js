@@ -1,5 +1,4 @@
 import RingCentral from 'ringcentral-js-concise'
-import pkg from '../package.json'
 
 const { Adapter, TextMessage, User } = global.hubot
 
@@ -11,7 +10,6 @@ class GlipAdapter extends Adapter {
       process.env.RINGCENTRAL_CLIENT_SECRET,
       process.env.RINGCENTRAL_SERVER || RingCentral.PRODUCTION_SERVER
     )
-    this.client.agents.push(`${pkg.name}/${pkg.version}`)
 
     this.client.getToken().then(() => {
       this.robot.logger.info('Token restored from file')
@@ -62,10 +60,6 @@ class GlipAdapter extends Adapter {
     }, e => {
       this.robot.logger.error(e)
     })
-  }
-
-  subscribe () {
-
   }
 
   send (envelope, string) {
