@@ -7,9 +7,9 @@ class GlipAdapter extends Adapter {
   constructor (robot) {
     super(robot)
     this.client = new RingCentral(
-      process.env.HUBOT_GLIP_APP_KEY,
-      process.env.HUBOT_GLIP_APP_SECRET,
-      process.env.HUBOT_GLIP_SERVER || RingCentral.PRODUCTION_SERVER
+      process.env.RINGCENTRAL_CLIENT_ID,
+      process.env.RINGCENTRAL_CLIENT_SECRET,
+      process.env.RINGCENTRAL_SERVER || RingCentral.PRODUCTION_SERVER
     )
     this.client.agents.push(`${pkg.name}/${pkg.version}`)
 
@@ -28,7 +28,7 @@ class GlipAdapter extends Adapter {
         return
       }
       this.robot.logger.info(req.query.code)
-      this.client.oauth(req.query.code, `${process.env.HUBOT_GLIP_BOT_SERVER}/oauth`).then(() => {
+      this.client.oauth(req.query.code, `${process.env.RINGCENTRAL_BOT_SERVER}/oauth`).then(() => {
         res.status(200)
         res.send('success')
         this.robot.logger.info('oauth is successful')

@@ -16,10 +16,10 @@
 ## Testing your bot
 
 ```
-HUBOT_GLIP_SERVER=https://platform.devtest.ringcentral.com \
-HUBOT_GLIP_APP_KEY=appKey \
-HUBOT_GLIP_APP_SECRET=appSecret \
-HUBOT_GLIP_BOT_SERVER=https://the-bot-server \
+RINGCENTRAL_SERVER=https://platform.devtest.ringcentral.com \
+RINGCENTRAL_CLIENT_ID=appKey \
+RINGCENTRAL_CLIENT_SECRET=appSecret \
+RINGCENTRAL_BOT_SERVER=https://the-bot-server \
 ./bin/hubot -a glip
 ```
 
@@ -28,14 +28,14 @@ HUBOT_GLIP_BOT_SERVER=https://the-bot-server \
 
 This adapter uses the following environment variables:
 
-- `HUBOT_GLIP_APP_KEY` - RingCentral App Key.
-- `HUBOT_GLIP_APP_SECRET` - RingCentral App Secret.
-- `HUBOT_GLIP_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
-- `HUBOT_GLIP_BOT_SERVER` - The server that your bot is running on.
+- `RINGCENTRAL_CLIENT_ID` - RingCentral App Key.
+- `RINGCENTRAL_CLIENT_SECRET` - RingCentral App Secret.
+- `RINGCENTRAL_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
+- `RINGCENTRAL_BOT_SERVER` - The server that your bot is running on. If you use ngork for development, the uri should be `https://xxxxx.ngrok.io`.
 
 
 ## Note
 
-When you create the app on RingCentral. You need to set the OAuth Redirect URI to `${HUBOT_GLIP_BOT_SERVER}/oauth`.
+When you create the app on RingCentral. You need to set the OAuth Redirect URI to `${RINGCENTRAL_BOT_SERVER}/oauth`.
 
-For example, if your bot is running on local with ngrok url `https://xxxxx.ngrok.io`, you should set the OAuth Redirect URI to `https://xxxxx.ngrok.io/oauth`.
+For example, if your bot is running on local with ngrok uri `https://xxxxx.ngrok.io`, you should set the OAuth Redirect URI to `https://xxxxx.ngrok.io/oauth`.
