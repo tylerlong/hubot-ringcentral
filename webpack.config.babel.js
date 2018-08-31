@@ -1,6 +1,6 @@
 export default {
   target: 'node',
-  mode: 'production',
+  mode: 'development',
   devtool: 'source-map',
   entry: './src/index.js',
   output: {
