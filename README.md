@@ -17,8 +17,8 @@
 
 ```
 RINGCENTRAL_SERVER=https://platform.devtest.ringcentral.com \
-RINGCENTRAL_CLIENT_ID=appKey \
-RINGCENTRAL_CLIENT_SECRET=appSecret \
+RINGCENTRAL_CLIENT_ID=clientId \
+RINGCENTRAL_CLIENT_SECRET=clientSecret \
 RINGCENTRAL_BOT_SERVER=https://the-bot-server \
 ./bin/hubot -a glip
 ```
@@ -28,8 +28,8 @@ RINGCENTRAL_BOT_SERVER=https://the-bot-server \
 
 This adapter uses the following environment variables:
 
-- `RINGCENTRAL_CLIENT_ID` - RingCentral App Key.
-- `RINGCENTRAL_CLIENT_SECRET` - RingCentral App Secret.
+- `RINGCENTRAL_CLIENT_ID` - RingCentral Client ID.
+- `RINGCENTRAL_CLIENT_SECRET` - RingCentral Client Secret.
 - `RINGCENTRAL_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
 - `RINGCENTRAL_BOT_SERVER` - The server that your bot is running on. If you use ngork for development, the uri should be `https://xxxxx.ngrok.io`.
 
