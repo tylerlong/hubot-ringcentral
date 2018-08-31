@@ -1,8 +1,7 @@
 import RingCentral from 'ringcentral-js-concise'
 import fs from 'fs'
 import PubNub from 'ringcentral-js-concise/src/pubnub'
-
-const { Adapter, TextMessage, User } = global.hubot
+import { Adapter, TextMessage, User } from 'hubot'
 
 class GlipAdapter extends Adapter {
   constructor (robot) {
