@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "Hubot adapter to use with Glip",
   "keywords": [
     "glip",
@@ -20,6 +20,7 @@
     "release": "webpack --progress --colors"
   },
   "dependencies": {
+    "parent-require": "^1.0.0",
     "ringcentral-js-concise": "^0.5.5"
   },
   "peerDependencies": {

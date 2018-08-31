@@ -1,7 +1,15 @@
 import RingCentral from 'ringcentral-js-concise'
 import fs from 'fs'
 import PubNub from 'ringcentral-js-concise/src/pubnub'
-import { Adapter, TextMessage, User } from 'hubot'
+
+let hubot = null
+try {
+  hubot = require('hubot')
+} catch (_) {
+  const prequire = require('parent-require')
+  hubot = prequire('hubot')
+}
+const { Adapter, TextMessage, User } = hubot
 
 class GlipAdapter extends Adapter {
   constructor (robot) {
