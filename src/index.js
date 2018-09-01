@@ -1,6 +1,6 @@
-import RingCentral from 'ringcentral-js-concise'
-import fs from 'fs'
-import PubNub from 'ringcentral-js-concise/src/pubnub'
+const fs = require('fs')
+const RingCentral = require('ringcentral-js-concise')
+const PubNub = require('ringcentral-js-concise/src/pubnub')
 
 let hubot = null
 try {
