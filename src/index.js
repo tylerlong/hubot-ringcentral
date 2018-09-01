@@ -29,10 +29,12 @@ class GlipAdapter extends Adapter {
       this.robot.logger.error('No saved token detected. You need to add the bot to Glip first.')
     }
 
-    this.robot.router.get('/oauth', async (req, res) => {
-      await this.rc.authorize({ code: req.query.code, redirect_uri: process.env.RINGCENTRAL_BOT_SERVER + '/oauth' })
+    this.robot.router.post('/oauth', (req, res) => {
+      this.rc.token(req.body)
       fs.writeFileSync('./token.json', JSON.stringify(this.rc.token(), null, 2))
       this.subscribe()
+      res.header('validation-token', req.header('validation-token'))
+      res.send('')
     })
   }
 
