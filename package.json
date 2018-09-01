@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "2.2.10",
+  "version": "2.2.11",
   "description": "Hubot adapter to use with Glip",
   "keywords": [
     "glip",
@@ -28,6 +28,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "6.4.1",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "eslint-plugin-html": "^4.0.5",
     "standard": "^12.0.1",

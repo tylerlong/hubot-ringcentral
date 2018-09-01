@@ -4,12 +4,10 @@ import path from 'path'
 module.exports = {
   target: 'node',
   externals: [nodeExternals()],
-  entry: {
-    'index': './src/index.js'
-  },
+  entry: ['babel-polyfill', './src/index.js'],
   output: {
     path: path.join(__dirname, 'src'),
-    filename: '[name].bundle.js',
+    filename: 'index.bundle.js',
     libraryTarget: 'commonjs2'
   },
   module: {
