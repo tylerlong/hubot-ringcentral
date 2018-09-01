@@ -2,8 +2,6 @@ import fs from 'fs'
 import RingCentral from 'ringcentral-js-concise'
 import PubNub from 'ringcentral-js-concise/src/pubnub.es5.js'
 
-console.log(RingCentral)
-
 let hubot = null
 try {
   hubot = require('hubot')
