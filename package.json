@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "2.2.8",
+  "version": "2.2.9",
   "description": "Hubot adapter to use with Glip",
   "keywords": [
     "glip",
