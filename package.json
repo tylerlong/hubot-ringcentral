@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "2.2.7",
+  "version": "2.2.8",
   "description": "Hubot adapter to use with Glip",
   "keywords": [
     "glip",
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "parent-require": "^1.0.0",
-    "ringcentral-js-concise": "^0.5.5"
+    "ringcentral-js-concise": "^0.5.6"
   },
   "peerDependencies": {
     "hubot": "^3.1.1"
