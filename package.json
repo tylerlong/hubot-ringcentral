@@ -1,6 +1,6 @@
 {
   "name": "hubot-glip",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Hubot adapter to use with Glip",
   "keywords": [
     "glip",
@@ -33,6 +33,7 @@
     "standard": "^12.0.1",
     "webpack": "^4.17.1",
     "webpack-cli": "^3.1.0",
+    "webpack-node-externals": "^1.7.2",
     "yarn-upgrade-all": "^0.3.0"
   },
   "files": [
