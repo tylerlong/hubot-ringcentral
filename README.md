@@ -5,8 +5,8 @@
 
 ## Video tutorials
 
-- [private bot](https://youtu.be/rEmd7SIDNe4)
-- [public bot](https://youtu.be/al-RoNSdfO8)
+- [How to createa a RingCentral private bot using Hubot](https://youtu.be/rEmd7SIDNe4)
+- [How to create a RingCentral public bot using Hubot](https://youtu.be/al-RoNSdfO8)
 
 
 ## Create a new bot
