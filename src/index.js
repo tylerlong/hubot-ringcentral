@@ -33,7 +33,6 @@ class GlipAdapter extends Adapter {
       this.rc.token(req.body)
       fs.writeFileSync('./token.json', JSON.stringify(this.rc.token(), null, 2))
       this.subscribe()
-      // res.header('validation-token', req.header('validation-token'))
       res.send('')
     })
 
@@ -45,7 +44,6 @@ class GlipAdapter extends Adapter {
       })
       fs.writeFileSync('./token.json', JSON.stringify(this.rc.token(), null, 2))
       this.subscribe()
-      // res.header('validation-token', req.header('validation-token'))
       res.send('')
     })
   }
