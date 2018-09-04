@@ -14,16 +14,7 @@ module.exports = {
     rules: [{
       test: /\.js$/,
       use: {
-        loader: 'babel-loader',
-        options: {
-          presets: [
-            ['env', {
-              'targets': {
-                'node': 4.2
-              }
-            }]
-          ]
-        }
+        loader: 'babel-loader'
       }
     }]
   }

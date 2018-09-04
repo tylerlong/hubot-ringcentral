@@ -24,7 +24,7 @@ class GlipAdapter extends Adapter {
       const data = fs.readFileSync('./token.json', 'utf8')
       this.rc.token(JSON.parse(data))
       this.robot.logger.info('Token restored from file')
-      this._subscribe()
+      this.subscribe()
     } else {
       this.robot.logger.error('No saved token detected. You need to add the bot to Glip first.')
     }
@@ -32,17 +32,13 @@ class GlipAdapter extends Adapter {
     this.robot.router.post('/oauth', (req, res) => {
       this.rc.token(req.body)
       fs.writeFileSync('./token.json', JSON.stringify(this.rc.token(), null, 2))
-      this._subscribe()
+      this.subscribe()
       res.header('validation-token', req.header('validation-token'))
       res.send('')
     })
   }
 
   subscribe () {
-
-  }
-
-  _subscribe () {
     const pubnub = new PubNub(this.rc, ['/restapi/v1.0/glip/posts'], message => {
       this.robot.logger.info(JSON.stringify(message, null, 2))
       const post = message.body
@@ -53,8 +49,6 @@ class GlipAdapter extends Adapter {
           name: `User ${post.creatorId} from Group ${post.groupId}`
         })
         const hubotMessage = new TextMessage(user, post.text, 'MSG-' + post.id)
-        this.robot.logger.info('this.robot.receive(hubotMessage)')
-        this.robot.logger.info(hubotMessage)
         this.robot.receive(hubotMessage)
       }
     })
