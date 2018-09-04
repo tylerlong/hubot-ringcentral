@@ -5,7 +5,7 @@
 
 ## Video tutorials
 
-- [private bot]
+- [private bot](https://youtu.be/rEmd7SIDNe4)
 - [public bot]
 
 
