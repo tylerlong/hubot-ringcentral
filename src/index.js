@@ -50,6 +50,7 @@ class GlipAdapter extends Adapter {
           name: `User ${post.creatorId} from Group ${post.groupId}`
         })
         const hubotMessage = new TextMessage(user, post.text, 'MSG-' + post.id)
+        this.robot.logger.info('this.robot.receive(hubotMessage)')
         this.robot.receive(hubotMessage)
       }
     })
@@ -57,14 +58,16 @@ class GlipAdapter extends Adapter {
     this.robot.logger.info('Subscription created')
   }
 
-  send (envelope, string) {
+  send (envelope, ...strings) {
+    const string = strings[0]
     this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
     this.rc.post('/restapi/v1.0/glip/posts', {
       groupId: envelope.user.reply_to, text: string
     })
   }
 
-  reply (envelope, string) {
+  reply (envelope, ...strings) {
+    const string = strings[0]
     this.robot.logger.info('reply ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
     this.rc.post('/restapi/v1.0/glip/posts', {
       groupId: envelope.user.reply_to, text: string
