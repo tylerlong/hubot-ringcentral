@@ -6,7 +6,7 @@
 ## Video tutorials
 
 - [private bot](https://youtu.be/rEmd7SIDNe4)
-- [public bot]
+- [public bot](https://youtu.be/al-RoNSdfO8)
 
 
 ## Create a new bot
