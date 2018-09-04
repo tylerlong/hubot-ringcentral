@@ -33,7 +33,19 @@ class GlipAdapter extends Adapter {
       this.rc.token(req.body)
       fs.writeFileSync('./token.json', JSON.stringify(this.rc.token(), null, 2))
       this.subscribe()
-      res.header('validation-token', req.header('validation-token'))
+      // res.header('validation-token', req.header('validation-token'))
+      res.send('')
+    })
+
+    this.robot.router.get('/oauth', async (req, res) => {
+      this.robot.logger.info(req.query.code)
+      await this.rc.authorize({
+        code: req.query.code,
+        redirectUri: `${process.env.RINGCENTRAL_BOT_SERVER}/oauth`
+      })
+      fs.writeFileSync('./token.json', JSON.stringify(this.rc.token(), null, 2))
+      this.subscribe()
+      // res.header('validation-token', req.header('validation-token'))
       res.send('')
     })
   }
