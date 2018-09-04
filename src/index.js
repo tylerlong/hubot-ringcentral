@@ -38,7 +38,7 @@ class GlipAdapter extends Adapter {
     })
   }
 
-  async subscribe () {
+  subscribe () {
     this.emit('connected')
     const pubnub = new PubNub(this.rc, ['/restapi/v1.0/glip/posts'], message => {
       this.robot.logger.info(JSON.stringify(message, null, 2))
@@ -54,7 +54,7 @@ class GlipAdapter extends Adapter {
         this.robot.receive(hubotMessage)
       }
     })
-    await pubnub.subscribe()
+    pubnub.subscribe()
     this.robot.logger.info('Subscription created')
   }
 
