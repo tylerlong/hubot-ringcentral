@@ -47,7 +47,7 @@ Then config it to `external-scripts.json`:
 
 Let's assume that we want to add `ping` feature to the bot.
 
-Creat `scripts/ping.js` file with the following content:
+Create `scripts/ping.js` file with the following content:
 
 ```js
 // Commands:
