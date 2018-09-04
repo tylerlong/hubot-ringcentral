@@ -22,7 +22,7 @@ your-bot/
 In the root of your bot project, execute:
 
 ```
-yarn add hubot hubot-glip && yarn add --dev babel-polyfill
+yarn add hubot@2.19.0 hubot-glip && yarn add --dev babel-polyfill
 ```
 
 
