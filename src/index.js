@@ -43,7 +43,6 @@ class GlipAdapter extends Adapter {
   }
 
   _subscribe () {
-    this.emit('connected')
     const pubnub = new PubNub(this.rc, ['/restapi/v1.0/glip/posts'], message => {
       this.robot.logger.info(JSON.stringify(message, null, 2))
       const post = message.body
@@ -55,6 +54,7 @@ class GlipAdapter extends Adapter {
         })
         const hubotMessage = new TextMessage(user, post.text, 'MSG-' + post.id)
         this.robot.logger.info('this.robot.receive(hubotMessage)')
+        this.robot.logger.info(hubotMessage)
         this.robot.receive(hubotMessage)
       }
     })
@@ -80,6 +80,7 @@ class GlipAdapter extends Adapter {
 
   run () {
     this.robot.logger.info('Run')
+    this.emit('connected')
   }
 }
 
