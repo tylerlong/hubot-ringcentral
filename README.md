@@ -1,6 +1,6 @@
-# hubot-glip
+# hubot-ringcentral (legacy: hubot-glip)
 
-[Hubot](https://hubot.github.com/) adapter to use with [Glip](https://glip.com/).
+[Hubot](https://hubot.github.com/) adapter to use with [RingCentral Team Messaging](https://app.ringcentral.com/).
 
 
 ## Video tutorials
@@ -22,7 +22,7 @@ your-bot/
 In the root of your bot project, execute:
 
 ```
-yarn add hubot@2.19.0 hubot-glip && yarn add --dev babel-polyfill
+yarn add hubot@2.19.0 hubot-ringcentral && yarn add --dev babel-polyfill
 ```
 
 
@@ -82,7 +82,7 @@ If you bot is a public bot, You need to set the OAuth Redirect URI to `${RINGCEN
 
 For example, if your bot is running on local with ngrok uri `https://xxxxx.ngrok.io`, you should set the OAuth Redirect URI to `https://xxxxx.ngrok.io/oauth`.
 
-When you successfully add the bot to Glip, a `token.json` file will be created for you automatically.
+When you successfully add the bot to RingCentral Team Messaging, a `token.json` file will be created for you automatically.
 
 
 ## Run your bot
@@ -92,19 +92,19 @@ RINGCENTRAL_SERVER=https://platform.devtest.ringcentral.com \
 RINGCENTRAL_CLIENT_ID=clientId \
 RINGCENTRAL_CLIENT_SECRET=clientSecret \
 RINGCENTRAL_BOT_SERVER=https://the-bot-server \
-npx hubot -a glip -n x
+npx hubot -a ringcentral -n x
 ```
 
-- `RINGCENTRAL_SERVER` - This is the Glip API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
+- `RINGCENTRAL_SERVER` - This is the RingCentral API server. Optional. By default it's `https://platform.ringcentral.com`. Use `https://platform.devtest.ringcentral.com` for sandbox
 - `RINGCENTRAL_BOT_SERVER` - **Optional**. The server that your bot is running on. If you use ngork for development, the uri should be `https://xxxxx.ngrok.io`. It is **only required** for public bot and when you do not have a RingCentral access token. Ignore this environment variable if your bot is a private bot or if you already have a RingCentral access token.
 - `-n x` means the name of your bot is `x`. You can use any name
 
 
 ## Test your bot
 
-For production login https://app.glip.com, for sandbox login https://glip-app.devtest.ringcentral.com/
+For production login https://app.ringcentral.com, for sandbox login https://app.devtest.ringcentral.com/
 
-Find your bot in Glip and talk to it:
+Find your bot in RingCentral and talk to it:
 
 
 ```
