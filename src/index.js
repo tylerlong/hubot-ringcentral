@@ -67,11 +67,19 @@ class GlipAdapter extends Adapter {
   }
 
   send (envelope, ...strings) {
-    const string = strings[0]
-    this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n' + string)
-    this.rc.post('/restapi/v1.0/glip/posts', {
-      groupId: envelope.user.reply_to, text: string
-    })
+    const textToSend = strings[0]
+    const attachmentsToSend = strings[1]
+    var dataToSend = {
+      groupId: envelope.user.reply_to
+    }
+    if(textToSend !== undefined){
+      dataToSend.text = textToSend
+    }
+    if(attachmentsToSend !== undefined){
+      dataToSend.attachments = attachmentsToSend
+    }
+    this.robot.logger.info('send ' + JSON.stringify(envelope, null, 4) + '\n\n object:' + JSON.stringify(dataToSend, null, 4))
+    this.rc.post('/restapi/v1.0/glip/posts', dataToSend)
   }
 
   reply (envelope, ...strings) {
