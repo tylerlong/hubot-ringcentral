@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tylerlong/hubot-glip.git"
+    "url": "git+https://github.com/tylerlong/hubot-ringcentral.git"
   },
   "author": "Tyler Long <tyler4long@gmail.com> (https://github.com/tylerlong)",
   "license": "MIT",
