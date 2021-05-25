@@ -1,7 +1,7 @@
 {
-  "name": "hubot-glip",
+  "name": "hubot-ringcentral",
   "version": "2.4.2",
-  "description": "Hubot adapter to use with Glip",
+  "description": "Hubot adapter to use with RingCentral Team Messaging",
   "keywords": [
     "glip",
     "hubot",

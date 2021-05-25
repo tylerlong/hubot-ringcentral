@@ -11,7 +11,7 @@ try {
 }
 const { Adapter, TextMessage, User } = hubot
 
-class GlipAdapter extends Adapter {
+class RingCentralAdapter extends Adapter {
   constructor (robot) {
     super(robot)
     this.rc = new RingCentral(
@@ -26,7 +26,7 @@ class GlipAdapter extends Adapter {
       this.robot.logger.info('Token restored from file')
       this.subscribe()
     } else {
-      this.robot.logger.error('No saved token detected. You need to add the bot to Glip first.')
+      this.robot.logger.error('No saved token detected. You need to add the bot to RingCentral first.')
     }
 
     this.robot.router.post('/oauth', (req, res) => {
@@ -97,5 +97,5 @@ class GlipAdapter extends Adapter {
 }
 
 exports.use = function (robot) {
-  return new GlipAdapter(robot)
+  return new RingCentralAdapter(robot)
 }
